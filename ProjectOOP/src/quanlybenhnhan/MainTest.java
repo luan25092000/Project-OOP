@@ -40,6 +40,7 @@ public class MainTest {
 				break;
 			
 			}
+			case 2:
 				
 			
 			
