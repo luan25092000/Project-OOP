@@ -66,7 +66,6 @@ public class MainTest {
 				m.edit_info();
 				break;
 			}
-			case 2:
 				
 			
 			
