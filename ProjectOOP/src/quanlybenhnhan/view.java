@@ -1,5 +1,8 @@
 package quanlybenhnhan;
 
+import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class view extends javax.swing.JFrame {
 
     /**
@@ -42,6 +45,10 @@ public class view extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        txtId.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         jLabel8 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -63,7 +70,6 @@ public class view extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QUẢN LÝ THÔNG TIN NGƯỜI BỆNH");
-
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
@@ -179,11 +185,6 @@ public class view extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel2.setText("Họ và tên");
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel8.setText("Giới tính");
@@ -198,13 +199,11 @@ public class view extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Nữ");
-
-        txtfullName.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfullNameActionPerformed(evt);
+                jRadioButton2ActionPerformed(evt);
             }
         });
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel9.setText("Ngày sinh");
 
@@ -301,7 +300,7 @@ public class view extends javax.swing.JFrame {
         //Save
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton3ActionPerformed(evt);//function
             }
         });
 
@@ -350,6 +349,7 @@ public class view extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, "AT15H", null, "Nguyễn Hữu Luân", null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -369,7 +369,9 @@ public class view extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, "AT15H", null, "Nguyễn Hữu Luân", null, null, null, null, null, null, null},
+                {null, "AT15H", null, "Nguyễn Hữu Luân", null, null, null, null, null, null, null},
+                {null, "AT15H", null, "Nguyễn Hữu Luân", null, null, null, null, null, null, null}
             },
             new String [] {
                 "STT", "Mã bệnh nhân", "Mã BHYT", "Họ và tên", "Giới tính", "Ngày sinh", "Địa chỉ", "Ngày vào viện", "Ngày ra viện", "Chẩn đoán", "Ghi chú"
@@ -459,8 +461,11 @@ public class view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+    private String jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    	return jRadioButton1.getText();
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private String jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    	return jRadioButton2.getText();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
     /**
      * 
@@ -468,16 +473,9 @@ public class view extends javax.swing.JFrame {
      * Save
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        String idPatient = txtId.getText();
+        String fullNamePatient = txtfullName.getText();
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-
-    }//GEN-LAST:event_txtIdActionPerformed
-
-    private void txtfullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfullNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfullNameActionPerformed
     /**
      * 
      * @param evt
@@ -492,7 +490,7 @@ public class view extends javax.swing.JFrame {
      * Delete
      */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+       
     }
     /**
      * @param args the command line arguments
