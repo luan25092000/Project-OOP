@@ -1,11 +1,13 @@
 package quanlybenhnhan;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class MainTest {
 	static Scanner sc = new Scanner(System.in);
 	private int n;
-	Info patient[] = new Info[50];
+	Info[] patient = new Info[50];
 	
+
 	public void Create_Info() {
 		System.out.println("SO LUONG BENH NHAN CAN NHAP THONG TIN ");
 		n = sc.nextInt();
@@ -44,7 +46,6 @@ public class MainTest {
 			}
 		}
 	}
-	
 	public static void main(String args[]) {
 		MainTest m = new MainTest();
 		
@@ -53,8 +54,10 @@ public class MainTest {
 		do {
 			System.out.println("1.......NHAP VA HIEN THI DANH SACH THONG TIN BENH NHAN");
 			System.out.println("2...... SUA THONG TIN BENH NHAN");
+			System.out.println("3.......XOA THONG TIN BENH NHAN");
 			System.out.println("----- CHON ------");
 			c = sc.nextInt();
+			sc.nextLine();
 			switch(c) {
 			
 			case 1:
@@ -65,8 +68,13 @@ public class MainTest {
 				System.out.println("2...... SUA THONG TIN BENH NHAN");
 				m.edit_info();
 				break;
+			case 3:
+				System.out.println("3.......XOA THONG TIN BENH NHAN");
+				System.out.print("Nhap id benh nhan can xoa: ");
+				String id = sc.nextLine();
+				PatientList.deletePatient(id);
+				break;
 			}
-				
 			
 			
 		}while(c<4);

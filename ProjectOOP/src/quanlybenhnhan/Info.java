@@ -74,7 +74,7 @@ public class Info {
 	public void insertInfo() {
 		
 		System.out.println("NHAP MSBN " );
-		Id = sc.next();
+		this.Id = sc.next();
 		System.out.println("NHAP HO TEN BENH NHAN ");
 		Name = sc.next();
 		sc.nextLine();
