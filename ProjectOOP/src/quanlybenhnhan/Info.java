@@ -105,10 +105,4 @@ public class Info {
 		ci.display_Checkin();
 		co.display_Checkout();
 	}
-
-	
-	
-	
-	
-
 }
