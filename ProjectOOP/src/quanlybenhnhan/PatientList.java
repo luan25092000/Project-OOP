@@ -54,5 +54,32 @@ public final class PatientList {
 			}
 		}
 	}
-
+	
+	// CHINH SUA THONG TIN BENH NHAN THEO MA BENH NHAN
+	public static void editPatient() {
+		System.out.println("NHAP MA SO BENH NHAN CAN CHINH SUA: ");
+		String id=sc.next();
+		boolean check =false;
+		if(isEmptyList()) {
+			System.out.println("Need to add patient info first!!!");
+		}
+		else {
+			for (int i=0;i<n;i++) {
+				if( id.equals(patientList.get(i).getId())){
+					check=true;
+					System.out.println("NHAP THONG TIN BENH NHAN CAN CHINH");
+					patientList.get(i).insertInfo();
+				}
+			}
+			if (!check) {
+				System.out.println("MA BENH NHAN KHONG HOP LE! ");
+			}
+			else {
+				for (int i=0;i<n;i++) {
+					System.out.println("DU LIEU CUA BENH NHAN THU "+(i+1));
+					patientList.get(i).displayInfo();
+				}
+			}
+		}
+	}
 }

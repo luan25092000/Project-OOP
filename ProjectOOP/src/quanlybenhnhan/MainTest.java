@@ -24,7 +24,7 @@ public class MainTest {
 				break;
 			case 2:
 				System.out.println("2...... SUA THONG TIN BENH NHAN");
-				
+				PatientList.editPatient();
 				break;
 			case 3:
 				System.out.println("3.......XOA THONG TIN BENH NHAN");
