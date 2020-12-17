@@ -11,14 +11,25 @@ public final class PatientList {
 	// Check if list is empty
 	public static boolean isEmptyList() {
         return (patientList.size() == 0);
-    }
+	}
+	// Check id on list
 	public static boolean isIdExisted(String id) {
 		for(int i = 0; i < patientList.size();i++) {
-			if(patientList.get(i).getId() == id) {
+			if(patientList.get(i).getId().equals(id)) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	// find index of patient
+	public static int index(String id){
+		for(int i = 0; i < patientList.size(); i++ ){
+			if(patientList.get(i).getId().equals(id)) {
+				return i;
+			}
+		}
+		return 0;
 	}
 	
 	// TAO DANH SACH BENH NHAN
@@ -37,6 +48,7 @@ public final class PatientList {
 		for(int i=0;i<patientList.size();i++)
 		{
 			patientList.get(i).displayInfo();
+			
 		}
 	}
 	
@@ -46,8 +58,9 @@ public final class PatientList {
 		}
 		else {
 			if(isIdExisted(id)) {
-				 patientList.remove(patientList.indexOf(id));
-				 System.out.println("Patient removed successfully!!!");
+				System.out.println("index: " + patientList.get(index(id)));
+				patientList.remove(patientList.get(index(id)));
+				System.out.println("Patient removed successfully!!!");
 			}
 			else {
 				System.out.println("Patient doesn't exist!!!");
