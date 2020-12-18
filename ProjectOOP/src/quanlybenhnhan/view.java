@@ -461,7 +461,7 @@ public class view extends javax.swing.JFrame {
             }
         });
         //Edit
-        jButton5.setText("Edit");
+        jButton5.setText("Update");
         jButton5.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
