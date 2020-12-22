@@ -2,14 +2,14 @@ package quanlybenhnhan;
 
 //Import libraries
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 import javax.swing.table.DefaultTableModel;
 
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
+
 
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout.Alignment;
@@ -21,6 +21,11 @@ import javax.swing.JOptionPane;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class view extends javax.swing.JFrame {
@@ -308,8 +313,8 @@ public class view extends javax.swing.JFrame {
         		.addComponent(jPanel5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         		.addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addContainerGap(445, Short.MAX_VALUE)
-        			.addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(429, Short.MAX_VALUE)
+        			.addComponent(jButton5)
         			.addGap(18)
         			.addComponent(jButton4)
         			.addGap(18)
@@ -460,8 +465,8 @@ public class view extends javax.swing.JFrame {
             	}
             }
         });
-        //Edit
-        jButton5.setText("Edit");
+        //Update
+        jButton5.setText("Update");
         jButton5.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -479,14 +484,42 @@ public class view extends javax.swing.JFrame {
         		JOptionPane.showMessageDialog(null, "Cập nhật thành công");
         	}
         });
+        
+        JButton btnNewButton = new JButton("Import");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		  String filePath = "D:\\file.txt";
+        	      File file = new File(filePath);
+        	      try {
+					BufferedReader br = new BufferedReader(new FileReader(file));
+    	            
+    	            // get lines from txt file
+    	            Object[] tableLines = br.lines().toArray();
+    	            
+    	            // extratct data from lines
+    	            // set data to jtable model
+    	            for(int i = 0; i < tableLines.length; i++)
+    	            {
+    	                String line = tableLines[i].toString().trim();
+    	                String[] dataRow = line.split("/");
+    	                model.addRow(dataRow);
+    	            }
+				}catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        	}
+        });
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8Layout.setHorizontalGroup(
-        	jPanel8Layout.createParallelGroup(Alignment.LEADING)
+        	jPanel8Layout.createParallelGroup(Alignment.TRAILING)
         		.addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
-        		.addGroup(Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-        			.addContainerGap(301, Short.MAX_VALUE)
+        		.addGroup(jPanel8Layout.createSequentialGroup()
+        			.addContainerGap(254, Short.MAX_VALUE)
         			.addComponent(jButton6)
-        			.addGap(299))
+        			.addGap(33)
+        			.addComponent(btnNewButton)
+        			.addGap(248))
         );
         jPanel8Layout.setVerticalGroup(
         	jPanel8Layout.createParallelGroup(Alignment.LEADING)
@@ -494,7 +527,9 @@ public class view extends javax.swing.JFrame {
         			.addContainerGap()
         			.addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(jButton6)
+        			.addGroup(jPanel8Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jButton6)
+        				.addComponent(btnNewButton))
         			.addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel8.setLayout(jPanel8Layout);
