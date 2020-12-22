@@ -62,11 +62,11 @@ public class Info {
 
 	public void insertInfo() {
 		getId();
-		System.out.println(" MSBN " +Id );
-		System.out.println("NHAP HO TEN BENH NHAN ");
+		System.out.println("ID:" +Id );
+		System.out.println("Input patient name: ");
 		Name = sc.next();
 		sc.nextLine();
-		System.out.println("NHAP GIOI TINH ");
+		System.out.println("Input gender: ");
 		Gender = sc.next();
 		b.insert_Bday();
 		a.insert_Address();
@@ -77,7 +77,7 @@ public class Info {
 	}
 
 	public void display_CV() {
-		System.out.println("THONG TIN BENH NHAN [ID=" + Id + ", Name=" + Name + ", Gender=" + Gender + "]");
+		System.out.println("Patient Info [ID=" + Id + ", Name=" + Name + ", Gender=" + Gender + "]");
 	}
 
 	public void displayInfo() {
