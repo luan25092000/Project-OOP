@@ -13,9 +13,9 @@ public final class PatientList {
         return (patientList.size() == 0);
 	}
 	// Check id on list
-	public static boolean isIdExisted(String id) {
+	public static boolean isIdExisted(int id) {
 		for(int i = 0; i < patientList.size();i++) {
-			if(patientList.get(i).getId().equals(id)) {
+			if(patientList.get(i).getId() == id) {
 				return true;
 			}
 		}
@@ -23,54 +23,60 @@ public final class PatientList {
 	}
 
 	// find index of patient
-	public static int index(String id){
+	public static int index(int id){
 		for(int i = 0; i < patientList.size(); i++ ){
-			if(patientList.get(i).getId().equals(id)) {
+			if(patientList.get(i).getId() == id) {
 				return i;
 			}
 		}
 		return 0;
 	}
 	
-	// TAO DANH SACH BENH NHAN
-		public static void createPatient() {
-			System.out.println("SO LUONG BENH NHAN CAN NHAP THONG TIN ");
+	// Create patient list
+	public static void createPatient() {
+			System.out.println("Needed number for adding patients: ");
 			n = sc.nextInt();
 			
 			for(int i = 0;i<n;i++) {
-				System.out.println("NHAP DU LIEU CHO BENH NHAN THU "+(i+1));
+				System.out.println("Patient data: "+(i+1));
 				Info p = new Info();
 				p.setId(i+1);
 				p.insertInfo();
 				patientList.add(p);
 			}
 					
-			// HIEN THI DANH SACH DA THEM VAO
+			// Show patient list
 			for(int i=0;i<patientList.size();i++)
 			{
 				patientList.get(i).displayInfo();
 			}
 		}
 	
-	public static void deletePatient(String id) {
+	// Delete patient from array list
+	public static void deletePatient(int id) {
+		// Check empty list
 		if(isEmptyList()) {
 			System.out.println("Need to add patient info first!!!");
 		}
 		else {
+			// Check id
 			if(isIdExisted(id)) {
-				System.out.println("index: " + patientList.get(index(id)));
 				patientList.remove(patientList.get(index(id)));
 				System.out.println("Patient removed successfully!!!");
 			}
 			else {
 				System.out.println("Patient doesn't exist!!!");
 			}
+			//Show list
+			for(int i=0;i<patientList.size();i++){
+				patientList.get(i).displayInfo();
+			}
 		}
 	}
 	
 	// CHINH SUA THONG TIN BENH NHAN THEO MA BENH NHAN
 	public static void editPatient() {
-		System.out.println("NHAP MA SO BENH NHAN CAN CHINH SUA: ");
+		System.out.println("Patient ID for editing: ");
 		int id=sc.nextInt();
 		boolean check =false;
 		if(isEmptyList()) {
@@ -80,10 +86,10 @@ public final class PatientList {
 			for (int i=0;i<n;i++) {
 				if( id == patientList.get(i).getId()){
 					check=true;
-					System.out.println("NHAP THONG TIN BENH NHAN CAN CHINH");
-					System.out.print("Ho ten benh nhan "+patientList.get(i).getName()+" -> ");
+					System.out.println("Editing patient: " + id);
+					System.out.print("Name: "+patientList.get(i).getName()+" -> ");
 					patientList.get(i).setName(editName());
-					System.out.print("Gioi tinh benh nhan "+patientList.get(i).getGender()+" -> ");
+					System.out.print("Gender: "+patientList.get(i).getGender()+" -> ");
 					patientList.get(i).setGender(editGender());
 					patientList.get(i).b.display_Bday();
 					System.out.print(" -> ");
@@ -101,26 +107,23 @@ public final class PatientList {
 				}
 			}
 			if (!check) {
-				System.out.println("MA BENH NHAN KHONG HOP LE! ");
+				System.out.println("Invalid ID!!!");
 			}
 			else {
 				for (int i=0;i<n;i++) {
-					System.out.println("DU LIEU CUA BENH NHAN THU "+(i+1));
+					System.out.println("Patient: "+(i+1));
 					patientList.get(i).displayInfo();
 				}
 			}
 		}
 	}
-	private static String editId() {
-        System.out.print("Nhap MSBN moi: ");
-        return sc.next();
-	}
+
 	private static String editName() {
-		System.out.print("Nhap Ho ten moi: ");
+		System.out.print("New name: ");
 		return sc.next();
 	}
 	private static String editGender() {
-		System.out.print("Nhap Gioi tinh moi: ");
+		System.out.print("New gender: ");
 		return sc.next();
 	}
 	

@@ -6,15 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
+            "name": "Launch MainTest",
             "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-MainTest",
-            "request": "launch",
-            "mainClass": "quanlybenhnhan.MainTest"
+            "mainClass": "quanlybenhnhan.MainTest",
+            "projectName": ""
         }
     ]
 }

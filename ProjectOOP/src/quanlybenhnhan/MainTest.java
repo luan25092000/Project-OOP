@@ -10,26 +10,28 @@ public class MainTest {
 		int c;
 		
 		do {
-			System.out.println("1.......NHAP VA HIEN THI DANH SACH THONG TIN BENH NHAN");
-			System.out.println("2...... SUA THONG TIN BENH NHAN");
-			System.out.println("3.......XOA THONG TIN BENH NHAN");
+			System.out.println("-----------------");
+			System.out.println("1.......Insert and show patient list");
+			System.out.println("2...... Edit patient info");
+			System.out.println("3.......Delete patient info");
 			System.out.println("----- CHON ------");
 			c = sc.nextInt();
 			sc.nextLine();
 			switch(c) {
 			
 			case 1:
-				System.out.println("1.......NHAP VA HIEN THI DANH SACH THONG TIN BENH NHAN");
+				System.out.println("1.......Insert and show patient list");
 				PatientList.createPatient();
 				break;
 			case 2:
-				System.out.println("2...... SUA THONG TIN BENH NHAN");
+				System.out.println("2...... Edit patient info");
 				PatientList.editPatient();
 				break;
 			case 3:
-				System.out.println("3.......XOA THONG TIN BENH NHAN");
-				System.out.print("Nhap id benh nhan can xoa: ");
-				String id = sc.nextLine();
+				System.out.println("3.......Delete patient info");
+				System.out.print("Delete patient with ID: ");
+				int id = sc.nextInt();
+				sc.nextLine();
 				PatientList.deletePatient(id);
 				break;
 			}
