@@ -22,8 +22,10 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -484,7 +486,7 @@ public class view extends javax.swing.JFrame {
         		JOptionPane.showMessageDialog(null, "Cập nhật thành công");
         	}
         });
-        
+        //Import
         JButton btnNewButton = new JButton("Import");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -501,10 +503,35 @@ public class view extends javax.swing.JFrame {
     	            for(int i = 0; i < tableLines.length; i++)
     	            {
     	                String line = tableLines[i].toString().trim();
-    	                String[] dataRow = line.split("/");
+    	                String[] dataRow = line.split(" ");
     	                model.addRow(dataRow);
     	            }
 				}catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        	}
+        });
+        //Export
+        btnNewButton_1 = new JButton("Export");
+        btnNewButton_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String filePath = "D:\\file.txt";
+        		File file = new File(filePath);
+        		try {
+					FileWriter fw = new FileWriter(file);
+					BufferedWriter bw = new BufferedWriter(fw);
+					for(int i = 0; i < jTable1.getRowCount(); i++) //rows
+    	            {
+						for(int j = 0; j < jTable1.getColumnCount(); j++) //collumns
+	    	            {
+	    	                bw.write(jTable1.getValueAt(i, j).toString()+" ");
+	    	            }
+						bw.newLine();
+    	            }
+					bw.close();
+					fw.close();
+				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -515,11 +542,13 @@ public class view extends javax.swing.JFrame {
         	jPanel8Layout.createParallelGroup(Alignment.TRAILING)
         		.addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
         		.addGroup(jPanel8Layout.createSequentialGroup()
-        			.addContainerGap(254, Short.MAX_VALUE)
+        			.addContainerGap(182, Short.MAX_VALUE)
         			.addComponent(jButton6)
-        			.addGap(33)
+        			.addGap(18)
         			.addComponent(btnNewButton)
-        			.addGap(248))
+        			.addGap(18)
+        			.addComponent(btnNewButton_1)
+        			.addGap(228))
         );
         jPanel8Layout.setVerticalGroup(
         	jPanel8Layout.createParallelGroup(Alignment.LEADING)
@@ -529,7 +558,8 @@ public class view extends javax.swing.JFrame {
         			.addPreferredGap(ComponentPlacement.UNRELATED)
         			.addGroup(jPanel8Layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jButton6)
-        				.addComponent(btnNewButton))
+        				.addComponent(btnNewButton)
+        				.addComponent(btnNewButton_1))
         			.addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel8.setLayout(jPanel8Layout);
@@ -647,4 +677,5 @@ public class view extends javax.swing.JFrame {
     private javax.swing.JTextField txtBHYT;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtfullName;
+    private JButton btnNewButton_1;
 }
