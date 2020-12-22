@@ -22,24 +22,24 @@ public class Id_Address {
 	}
 	
 	public void insert_Address() {
-		System.out.println("NHAP THONG TIN DIA CHI");
-		System.out.println("NHAP SO NHA");
+		System.out.println("Input address: ");
+		System.out.println("Apartment Homes: ");
 		Number = sc.nextInt();
 		sc.nextLine();
 
-		System.out.println("NHAP TEN DUONG");
+		System.out.println("Street: ");
 		Street = sc.nextLine();
 		
-		System.out.println("NHAP QUAN/HUYEN/PHUONG");
+		System.out.println("District/Town-Ward-Province");
 		District = sc.nextLine();
 		
-		System.out.println("NHAP THANH PHO");
+		System.out.println("City: ");
 		City= sc.nextLine();
 		
 	}
 	public void display_Address() {
 		
-		System.out.println("THONG TIN DIA CHI "+ "SO  "+Number+" DUONG "+Street+" QUAN/HUYEN/PHUONG "+District+" THANH PHO "+City);
+		System.out.println("Address: "+ "No."+Number+" Street "+Street+" District/Town-Ward-Province "+District+" City "+City);
 		
 	}
 	

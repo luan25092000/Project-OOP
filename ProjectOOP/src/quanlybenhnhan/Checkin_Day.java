@@ -34,21 +34,21 @@ public class Checkin_Day extends Id_Day {
 	}
 	
 	public void insert_Checkin() {
-		System.out.println("THONG TIN -----NHAP VIEN-----");
+		System.out.println("----- Checkin input -----");
 
 		super.insert_Day();
-		System.out.println("NHAP GIO ");
+		System.out.println("Input hours: ");
 		Id_Hour = sc.nextInt();
 		
-		System.out.println("NHAP PHUT");
+		System.out.println("Input minutes: ");
 		Id_Minute= sc.nextInt();
 	}
 	
 	public void display_Checkin() {
-		System.out.println("-----NHAP VIEN-----");
+		System.out.println("----- Checkin -----");
 		super.display_Day();
-		System.out.println("BENH NHAN NHAP VIEN NGAY "+Day+"/"+Month+"/"+Year);
-		System.out.println("BENH NHANH NHAP VIEN LUC "+ Id_Hour +" GIO" + Id_Minute + " PHUT" );
+		System.out.println("Checkin date: "+Day+"/"+Month+"/"+Year);
+		System.out.println("Time: "+ Id_Hour +"h" + Id_Minute + "m" );
 	}
 	
 	

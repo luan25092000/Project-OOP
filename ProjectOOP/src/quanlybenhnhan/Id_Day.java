@@ -26,19 +26,19 @@ public Id_Day(int Year, int Month, int Day) {
 public void insert_Day() {
 	
 	
-	System.out.println("NHAP NGAY");
+	System.out.println("Input date: ");
 	Day = sc.nextInt();
 	
-	System.out.println("NHAP THANG");
+	System.out.println("Input month: ");
 	Month = sc.nextInt();
 	
-	System.out.println("NHAP NAM");
+	System.out.println("Input Year: ");
 	Year= sc.nextInt();
 	
 }
 
 public void display_Day() {
-	System.out.println("NGAY " + Day + " THANG " + Month+ " NAM " + Year);
+	System.out.println("Date " + Day + " Month " + Month+ " Year " + Year);
 	
 }	
 

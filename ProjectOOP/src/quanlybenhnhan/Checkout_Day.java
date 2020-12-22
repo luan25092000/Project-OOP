@@ -35,23 +35,23 @@ public class Checkout_Day extends Id_Day {
 	
 	public void insert_Checkout() {
 		
-			System.out.println("THONG TIN ------ XUAT VIEN -----");
+			System.out.println("------ Checkout input -----");
 			super.insert_Day();
 
-			System.out.println("NHAP GIO ");
+			System.out.println("Input hours: ");
 			Id_Hour = sc.nextInt();
 			
-			System.out.println("NHAP PHUT");
+			System.out.println("Input minutes: ");
 			Id_Minute= sc.nextInt();
 		
 		
 	}
 	
 	public void display_Checkout() {
-		System.out.println("------ XUAT VIEN -----");
+		System.out.println("------ Checkout -----");
 		super.display_Day();
-		System.out.println("BENH NHAN XUAT VIEN NGAY "+Day+"/"+Month+"/"+Year);
-		System.out.println("BENH NHANH XUAT VIEN LUC "+ Id_Hour +" GIO" + Id_Minute + " PHUT" );
+		System.out.println("Checkout date: "+Day+"/"+Month+"/"+Year);
+		System.out.println("time: "+ Id_Hour +" h" + Id_Minute + " m" );
 	}
 	
 		
