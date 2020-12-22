@@ -407,15 +407,18 @@ public class view extends javax.swing.JFrame {
         jButton4.setText("Clear");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	txtId.setText("");
-            	txtBHYT.setText("");
-            	txtfullName.setText("");
-            	birthday.setDate(null);
-            	txtAddress.setText("");
-            	dateEntry.setDate(null);
-            	dateExit.setDate(null);
-            	txtAreaGuess.setText("");
-            	txtNote.setText("");
+            	int isConfirm = JOptionPane.showConfirmDialog(null, "Do you want to reset ?");
+            	if(isConfirm==0) {
+            		txtId.setText("");
+                	txtBHYT.setText("");
+                	txtfullName.setText("");
+                	birthday.setDate(null);
+                	txtAddress.setText("");
+                	dateEntry.setDate(null);
+                	dateExit.setDate(null);
+                	txtAreaGuess.setText("");
+                	txtNote.setText("");
+            	}
             }
         });
         jTable1.addMouseListener(new MouseAdapter() {
@@ -458,12 +461,15 @@ public class view extends javax.swing.JFrame {
         jButton6.setText("Delete");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	int isConfirm = JOptionPane.showConfirmDialog(null, "Do you want to delete this patient ?");
             	int index = jTable1.getSelectedRow();
-            	if(index >= 0) {
-            		model.removeRow(jTable1.getSelectedRow());
-                	JOptionPane.showMessageDialog(null, "Deleted successfully");
-            	}else {
-            		JOptionPane.showMessageDialog(null, "Please select row to delete");
+            	if(isConfirm==0) {
+            		if(index >= 0) {
+                		model.removeRow(jTable1.getSelectedRow());
+                    	JOptionPane.showMessageDialog(null, "Deleted successfully");
+                	}else {
+                		JOptionPane.showMessageDialog(null, "Please select row to delete");
+                	}
             	}
             }
         });
@@ -492,24 +498,32 @@ public class view extends javax.swing.JFrame {
         	public void actionPerformed(ActionEvent e) {
         		  String filePath = "D:\\file.txt";
         	      File file = new File(filePath);
-        	      try {
-					BufferedReader br = new BufferedReader(new FileReader(file));
-    	            
-    	            // get lines from txt file
-    	            Object[] tableLines = br.lines().toArray();
-    	            
-    	            // extratct data from lines
-    	            // set data to jtable model
-    	            for(int i = 0; i < tableLines.length; i++)
-    	            {
-    	                String line = tableLines[i].toString().trim();
-    	                String[] dataRow = line.split(" ");
-    	                model.addRow(dataRow);
-    	            }
-				}catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+        	      if(file.exists() && !file.isDirectory()) { 
+        	    	  int isConfirm = JOptionPane.showConfirmDialog(null, "Do you want to import file ?");
+            	      try {
+            	    	if(isConfirm==0) {
+            	    		BufferedReader br = new BufferedReader(new FileReader(file));
+            	            
+            	            // get lines from txt file
+            	            Object[] tableLines = br.lines().toArray();
+            	            
+            	            // extratct data from lines
+            	            // set data to jtable model
+            	            for(int i = 0; i < tableLines.length; i++)
+            	            {
+            	                String line = tableLines[i].toString().trim();
+            	                String[] dataRow = line.split(" ");
+            	                model.addRow(dataRow);
+            	            }
+            	            JOptionPane.showMessageDialog(null, "Import file successfully!");
+            	    	}
+    				}catch (IOException e1) {
+    					// TODO Auto-generated catch block
+    					e1.printStackTrace();
+    				}
+      			  }else {
+      				  JOptionPane.showMessageDialog(null, "File does not exist !");
+      			  }
         	}
         });
         //Export
@@ -521,16 +535,18 @@ public class view extends javax.swing.JFrame {
         		try {
 					FileWriter fw = new FileWriter(file);
 					BufferedWriter bw = new BufferedWriter(fw);
-					for(int i = 0; i < jTable1.getRowCount(); i++) //rows
-    	            {
+					int index = jTable1.getSelectedRow();
+					if(index != -1) {
 						for(int j = 0; j < jTable1.getColumnCount(); j++) //collumns
 	    	            {
-	    	                bw.write(jTable1.getValueAt(i, j).toString()+" ");
+	    	                bw.write(jTable1.getValueAt(index, j).toString()+" ");
 	    	            }
-						bw.newLine();
-    	            }
-					bw.close();
-					fw.close();
+						JOptionPane.showMessageDialog(null, "Export file successfully!");
+						bw.close();
+						fw.close();
+					}else {
+						JOptionPane.showMessageDialog(null, "You must choose patient to export file!");
+					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
