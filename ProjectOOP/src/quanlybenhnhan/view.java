@@ -498,28 +498,32 @@ public class view extends javax.swing.JFrame {
         	public void actionPerformed(ActionEvent e) {
         		  String filePath = "D:\\file.txt";
         	      File file = new File(filePath);
-        	      int isConfirm = JOptionPane.showConfirmDialog(null, "Do you want to import file ?");
-        	      try {
-        	    	if(isConfirm==0) {
-        	    		BufferedReader br = new BufferedReader(new FileReader(file));
-        	            
-        	            // get lines from txt file
-        	            Object[] tableLines = br.lines().toArray();
-        	            
-        	            // extratct data from lines
-        	            // set data to jtable model
-        	            for(int i = 0; i < tableLines.length; i++)
-        	            {
-        	                String line = tableLines[i].toString().trim();
-        	                String[] dataRow = line.split(" ");
-        	                model.addRow(dataRow);
-        	            }
-        	            JOptionPane.showMessageDialog(null, "Import file successfully!");
-        	    	}
-				}catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+        	      if(file.exists() && !file.isDirectory()) { 
+        	    	  int isConfirm = JOptionPane.showConfirmDialog(null, "Do you want to import file ?");
+            	      try {
+            	    	if(isConfirm==0) {
+            	    		BufferedReader br = new BufferedReader(new FileReader(file));
+            	            
+            	            // get lines from txt file
+            	            Object[] tableLines = br.lines().toArray();
+            	            
+            	            // extratct data from lines
+            	            // set data to jtable model
+            	            for(int i = 0; i < tableLines.length; i++)
+            	            {
+            	                String line = tableLines[i].toString().trim();
+            	                String[] dataRow = line.split(" ");
+            	                model.addRow(dataRow);
+            	            }
+            	            JOptionPane.showMessageDialog(null, "Import file successfully!");
+            	    	}
+    				}catch (IOException e1) {
+    					// TODO Auto-generated catch block
+    					e1.printStackTrace();
+    				}
+      			  }else {
+      				  JOptionPane.showMessageDialog(null, "File does not exist !");
+      			  }
         	}
         });
         //Export
@@ -532,13 +536,17 @@ public class view extends javax.swing.JFrame {
 					FileWriter fw = new FileWriter(file);
 					BufferedWriter bw = new BufferedWriter(fw);
 					int index = jTable1.getSelectedRow();
-					for(int j = 0; j < jTable1.getColumnCount(); j++) //collumns
-    	            {
-    	                bw.write(jTable1.getValueAt(index, j).toString()+" ");
-    	            }
-					JOptionPane.showMessageDialog(null, "Export file successfully!");
-					bw.close();
-					fw.close();
+					if(index != -1) {
+						for(int j = 0; j < jTable1.getColumnCount(); j++) //collumns
+	    	            {
+	    	                bw.write(jTable1.getValueAt(index, j).toString()+" ");
+	    	            }
+						JOptionPane.showMessageDialog(null, "Export file successfully!");
+						bw.close();
+						fw.close();
+					}else {
+						JOptionPane.showMessageDialog(null, "You must choose patient to export file!");
+					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
