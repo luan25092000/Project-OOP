@@ -28,7 +28,6 @@ public class Info {
 	
 	
 
-
 	public  int getId() {
 		return Id;
 	}
@@ -59,14 +58,6 @@ public class Info {
 	}
 
 
-	public String getPhone() {
-		return Phone;
-	}
-
-
-	public void setPhone(String phone) {
-		Phone = phone;
-	}
 
 
 	public void insertInfo() {
@@ -86,7 +77,7 @@ public class Info {
 	}
 
 	public void display_CV() {
-		System.out.println("THONG TIN BENH NHAN [ID=" + Id + ", Name=" + Name + ", Gender=" + Gender + ", Address=" + Address+ ", Phone=" + Phone + ")");
+		System.out.println("THONG TIN BENH NHAN [ID=" + Id + ", Name=" + Name + ", Gender=" + Gender + "]");
 	}
 
 	public void displayInfo() {
