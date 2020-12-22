@@ -374,7 +374,7 @@ public class view extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
             	if(txtId.getText().equals("")||txtBHYT.getText().equals("")||txtfullName.getText().equals("")||male.getText().equals("")||female.getText().equals("")) {
-            		JOptionPane.showMessageDialog(null, "Xin hãy điền đầy đủ thông tin của bệnh nhân");
+            		JOptionPane.showMessageDialog(null, "Please fill out information of patient !");
             	}
             	else {
                 	row[0] = txtId.getText();
@@ -388,7 +388,7 @@ public class view extends javax.swing.JFrame {
                 	row[8] = txtAreaGuess.getText();
                 	row[9] = txtNote.getText();
                     model.addRow(row);
-                    JOptionPane.showMessageDialog(null, "Thêm thông tin bệnh nhân thành công");
+                    JOptionPane.showMessageDialog(null, "Add patient successfully !");
                     txtId.setText("");
                 	txtBHYT.setText("");
                 	txtfullName.setText("");
@@ -489,7 +489,7 @@ public class view extends javax.swing.JFrame {
         		model.setValueAt(dFormat.format(dateExit.getDate()), index, 7);
         		model.setValueAt(txtAreaGuess.getText(), index, 8);
         		model.setValueAt(txtNote.getText(), index, 9);
-        		JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+        		JOptionPane.showMessageDialog(null, "Updated successfully !");
         	}
         });
         //Import
