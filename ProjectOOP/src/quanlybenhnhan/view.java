@@ -17,7 +17,9 @@ import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.GroupLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
+import java.awt.BorderLayout;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -84,10 +86,13 @@ public class view extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane(jTable1);
         
         jTable1.setBackground(SystemColor.activeCaption);
+        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        jPanel8.add(jScrollPane3, BorderLayout.CENTER);
         jButton6 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         model = new DefaultTableModel();
